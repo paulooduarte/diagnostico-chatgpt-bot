@@ -1,0 +1,13 @@
+✅ Diagnóstico concluído com sucesso!
+
+Seu sistema está rodando Ubuntu 25.05 com kernel atualizado.
+Não foram detectados conflitos graves.
+
+🔊 Áudio corrigido com PipeWire.
+🔄 GNOME Control Center atualizado parcialmente, ainda aguardando faseamento.
+
+📦 Recomendações:
+- Aguardar liberação completa do pacote gnome-control-center pelo apt.
+- Utilizar interface web para acompanhar atualizações futuras.
+
+🔗 Este relatório foi processado automaticamente via GitHub Actions + ChatGPT.
