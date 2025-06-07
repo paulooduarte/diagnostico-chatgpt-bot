@@ -33,3 +33,4 @@ chmod +x ultimate_diagnostico_corrigir_atualizar.sh
 ```bash
 python3 agente_envio_chatgpt.py
 ```
+# Teste manual de push para ativar o GitHub Actions
