@@ -2,39 +2,21 @@ name: Diagnóstico ChatGPT Bot
 
 on:
   push:
-  schedule:
-    - cron: '0 3 * * *'  # Executa todo dia às 03h UTC (00h de Brasília)
-  workflow_dispatch:
 
 jobs:
   diagnostico:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Clona repositório
+      - name: Clonar repositório
         uses: actions/checkout@v3
 
-      - name: Configura Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Instala dependências
+      - name: Instalar dependências
         run: pip install -r requirements.txt
 
-      - name: Executa agente de envio ao ChatGPT
+      - name: Executar script de envio
+        run: python3 agente_envio_chatgpt.py
         env:
-          OPENAI_API_KEY: ${{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  }}
-        run: python agente_envio_chatgpt.py
-
-      - name: Copia resposta para interface web
-        run: |
-          mkdir -p docs
-          cp diagnostico_chatgpt_logs/resposta_mais_recente.txt docs/
-
-      - name: Commita relatório atualizado
-        run: |
-          git config --global user.name "paulooduarte"
-          git config --global user.email "pauloo.adm@gmail.com"
-          git add docs/resposta_mais_recente.txt
-          git commit -m "Atualiza resposta mais recente do diagnóstico" || echo "Nada a commitar"
-          git push
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
